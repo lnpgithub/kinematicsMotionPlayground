@@ -1,0 +1,74 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kinematics Simulator  </title>
+    <script src="https://www.desmos.com/api/v1.8/calculator.js?apiKey=dcb31709b452b1cf9dc26972add0fda6"></script>
+    <h1>KINEMATICS MOTION PLAYGROUND</h1>
+</head>
+<body>
+    <div id="pcalculator" style="width: 600px; height: 200px;"></div>
+    <div id="vcalculator" style="width: 600px; height: 200px;"></div>
+    <div id="acalculator" style="width: 600px; height: 200px;"></div>
+
+
+    <br><br>
+
+    <section>Position x(t)</section>
+    
+    <input id="pos" name="Position" placeholder="Enter initial position:"/> 
+    
+
+    <p class = "output" id="output1"></p>
+
+
+    <section>Velocity v(t)</section>
+
+    <input id="vel" name="Velocity" placeholder="Enter initial velocity:"> 
+    
+
+    <br><br>
+
+    <section>Acceleration a(t)</section>
+
+    <input id="accel" name="Acceleration" placeholder="Enter acceleration:"/> 
+    <br><br>
+    <button id="mysubmit">Submit</button>
+
+
+
+    <script>
+    
+    document.getElementById("mysubmit").onclick = function(){
+
+    pos = document.getElementById("pos").value;
+    v = document.getElementById("vel").value;
+    a = document.getElementById("accel").value;
+
+    
+    pcalculator.setExpression({id: "line 1", latex: "y = " + pos + " + " + v + "x + 0.5*" + a + "x^2", color: "#ff0000"})
+    vcalculator.setExpression({id: "line 2", latex: "y = \\frac{d}{dx}(" + pos + " + " + v + "x + 0.5*" + a + "x^2)", color: "blue"})
+    acalculator.setExpression({id: "line 3", latex: "y =" + a, color: "orange"})
+
+
+}
+    var eltp = document.getElementById('pcalculator');
+    var pcalculator = Desmos.GraphingCalculator(eltp, {expressions: false, settingsMenu: false});
+    
+   
+    var eltv = document.getElementById('vcalculator');
+    var vcalculator = Desmos.GraphingCalculator(eltv, {expressions: false, settingsMenu: false});
+    
+   
+
+    var elta = document.getElementById('acalculator');
+    var acalculator = Desmos.GraphingCalculator(elta, {expressions: false, settingsMenu: false});
+    
+    
+    </script>
+    
+</body>
+</html>
